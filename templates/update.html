@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改服务</title>
+</head>
+<body>
+
+    <form action='/updateaction/' method="post">
+            <div><span>token:</span><input id="id" type="hidden" name="id" value="{{user.id}}" /><input type="text" name="token" value="{{user.token}}" /></div>
+            <div><span>姓名:</span><input type="text" name="name" value="{{user.name}}"/></div>
+            <div><span>e-mail:</span><input type="text" name="email" value="{{user.email}}" /></div>
+            <div><span>打卡数据:</span>
+                <textarea id="token" name="data" rows="5">{{user.data}}</textarea>
+            </div>
+            <div><span>服务启动:</span>
+                <label for="listen"><input id="listen" type="radio" name="need_daka" value="1" {%if user.need_daka == 1 %}checked{% endif %}/>是</label>
+                <label for="not"><input id="not" type="radio" name="need_daka" value="0" {%if user.need_daka == 0 %}checked{% endif %}/>否</label> 
+            </div>
+            <div>
+                <input type="submit" value="确认更改">
+
+            </div>
+        </form>
+        <div>
+            <button type="button" onclick="btn()">最新token获取</button>
+            <button onclick="save()">将接受数据扔表单里去</button>
+        </div>
+                <script>
+                    var saveText = ""
+                    function btn() {
+                        const id = document.getElementById("id").value
+                        console.log(document.getElementById("id").value)
+                        fetch("/getNewLoc/?id=" + id).then(res=>{
+                            return res.text()
+                        }).then(res=>{
+                            document.getElementById("textarea").value = res
+                            saveText = res
+                        })
+                    }
+                    function save() {
+                        document.getElementById("token").value= saveText
+                    }
+                </script>
+                <textarea id="textarea" rows="10" readonly>
+
+                </textarea>
+        </body>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form >div {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        form > div > span {
+            width: 90px;
+            display: inline-block;
+        }
+
+        input {
+            border-radius: 3px;
+            border: #aaa solid 1px;
+            outline: none;
+        }
+        input:focus {
+            border: #337ecc solid 1px;
+        }
+        textarea {
+            appearance: none;
+            /* height: 100px; */
+            border-radius: 3px;
+            border: #aaa solid 1px;
+            outline: none;
+
+        }
+        textarea:focus {
+            border: #337ecc solid 1px;
+        }
+    </style>
+</html>

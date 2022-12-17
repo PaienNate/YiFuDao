@@ -1,0 +1,66 @@
+{% block page_content %}
+<!-- 登录表单 -->
+<div style="display: block;margin: auto;">
+   <form method="POST">
+    {{ form.csrf_token }}
+     <div class="form-group">
+         {{ form.username.label }}
+         {{ form.username(class='form-control') }}
+     </div>
+    <div>
+        {{ form.password.label }}
+        {{ form.password(class='form-control') }}
+    </div>
+ 
+    <div>
+        <span> {{form.submit(class='my-button my-button-blue big-font')}}</span>
+         {% if emsg %}  <!-- 如果有错误信息 则显示 -->
+        <span style="position:relative;left:10px;color:red"> {{ emsg }}</span>
+        {% endif %}
+ 
+</div>
+</form>
+<style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form >div {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        form > div > span {
+            width: 90px;
+            display: inline-block;
+        }
+
+        input {
+            border-radius: 3px;
+            border: #aaa solid 1px;
+            outline: none;
+            margin-left: 10px;
+        }
+        input:focus {
+            border: #337ecc solid 1px;
+        }
+        .my-button{
+        background-color: #fff;
+        border-radius: 4px;
+        }
+        .my-button-blue{
+            color: #409EFF;
+            border: #409EFF solid 1px;
+        }
+        .my-button-blue:hover{
+            background-color: #409EFF;
+            color: #fff;
+        }
+        .big-font{
+            font-size: 18px;
+            font-weight: 800;
+        }
+</style>
+</div>
+ 
+{% endblock %}

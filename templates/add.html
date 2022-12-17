@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加打卡服务</title>
+</head>
+<body>
+    <form action='/addaction/' method="post">
+        <div><span>token:</span> <input type="text" name="token" /></div>
+        <div><span>姓名:</span><input type="text" name="name" /></div>
+        <div><span>e-mail:</span><input type="text" name="email" /></div>
+        <div><span>打卡数据:</span><input type="text" name="data" /></div>
+        <div><span>服务启动:</span>
+            <label for="listen"><input id="listen" type="radio" name="need_daka" value="1" />是</label>
+            <label for="not"><input id="not" type="radio" name="need_daka" value="0" />否</label>
+        </div>
+        <div><input type="submit" value="添加"></div>
+    </form>
+</body>
+<style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form >div {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        form > div > span {
+            width: 90px;
+            display: inline-block;
+        }
+
+        input {
+            border-radius: 3px;
+            border: #aaa solid 1px;
+            outline: none;
+        }
+        input:focus {
+            border: #337ecc solid 1px;
+        }
+        textarea {
+            appearance: none;
+            /* height: 100px; */
+            border-radius: 3px;
+            border: #aaa solid 1px;
+            outline: none;
+
+        }
+        textarea:focus {
+            border: #337ecc solid 1px;
+        }
+</style>
+</html>

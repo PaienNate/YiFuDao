@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单的垃圾的列表</title>
+</head>
+<body>
+<div class="body">
+<div class="table-operator">
+    <a class="my-button my-button-blue" style="font-size:18px;font-weight: 800;" href="/add/" >添加新用户</a>
+    <a class="my-button my-button-green" style="font-size:18px;font-weight: 800;" href="/daka/" >手动打卡</a>
+</div>
+<table cellpadding="0" cellspacing="0">
+    <thead>
+    <tr>
+        <th style="width: 50px;">id</th>
+        <th style="width: 60px;">操作</th>
+        <th style="display:none">token</th>
+        <th style="width: 80px;">用户名</th>
+        <th style="width: 100px;">邮箱</th>
+        <th style="display:none">data</th>
+        <th style="width: 80px;">服务状态</th>
+    </tr></thead>
+    {% for user in userlist %}
+    <tr>
+        <td>{{user.id}}</td>
+        <td>
+                <a style="display:none" href="/delete/?id={{user.id}}">
+                    删除[隐藏]
+                </a>
+                <a class="my-button my-button-blue" href="/update/?id={{user.id}}">
+                    修改
+                </a>
+                <a style="display:none" class="my-button my-button-blue" href="/getNewLoc/?id={{user.id}}">
+                    token
+                </a>
+            
+        </td>
+        <td style="display:none">{{user.token}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td style="display:none">{{user.data}}</td>
+        <td>
+            {% if user.need_daka == 1 %}
+            <div class="type-box success">已启动</div>
+            {% else %}
+            <div class="type-box danger">已关闭</div>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</body>
+<style>
+    .type-box{
+        border-radius: 3px;
+        color: aliceblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 3px 33px;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 2px 5px;
+    }
+    .danger{
+        background-color: #F56C6C;
+    }
+    .success{
+        background-color: #67C23A;
+    }
+    a{
+        text-decoration: none;
+        display: inline-block;
+        padding: 2px 7px;
+        border-radius: 2px;
+        font-size: 13px;
+    }
+    .my-button{
+        background-color: #fff;
+        border-radius: 4px;
+    }
+    .my-button-blue{
+        color: #409EFF;
+        border: #409EFF solid 1px;
+    }
+    .my-button-blue:hover{
+        background-color: #409EFF;
+        color: #fff;
+    }
+    .my-button-green{
+        color: #67C23A;
+        border: #67C23A solid 1px;
+    }
+    .my-button-green:hover{
+        background-color: #67C23A;
+        color: #fff;
+    }
+    td{
+        text-align: center;
+        margin: 0 10px;
+    }
+    td>*{
+        margin: auto;
+    }
+
+    thead{
+        margin-bottom: 10px;
+    }
+
+    .table-operator{
+        margin: 20px 0;
+        margin-left: 50px;
+    }
+    .table-operator>*{
+        margin: auto;
+    }
+    tr,thead {
+        height: 40px;
+    }
+    .body {
+        overflow: auto;
+    }
+    .body>*{
+        min-width: 600px;
+    }
+</style>
+</html>
