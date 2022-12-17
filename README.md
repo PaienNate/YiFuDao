@@ -1,6 +1,11 @@
 # 奕辅导健康打卡脚本
 
-本项目为Python脚本所写，适合用于有python运行环境的机器。不熟悉python的小伙伴可以看一下基于云函数的打卡脚本，部署更加方便快捷：
+本项目为Python脚本所写，适合用于有python运行环境的机器。
+
+其原项目来源于：https://github.com/zimin9/YiFuDaoPuncher
+
+
+不熟悉python的小伙伴可以看一下基于云函数的打卡脚本，部署更加方便快捷：
 
 https://github.com/Chorer/YiFuDaoChecker-cloudFunction
 
@@ -16,34 +21,26 @@ https://github.com/uiolee/NanFuDao
 
 
 
-#### 2、打开 `default_data.py`，填写相关配置信息
+#### 2、部署到服务器，打开ip地址:5000/login
 
-**2.1 配置打卡信息：**
+**2.1 登录打卡：**
 
-```python
-# 打卡的accessToken
-accessToken = "tW4ATw/+dOxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxmJuyfpfYcAsuSnOn2chlDaLo8r+hMVBStA1O2JxotiyzEJBxxxxxxxxxxxxxxxxxTxV/ZQ2kjxfYjqsaw/M9AiZ2Glqg=="
-
-# 打卡数据
-punch_in_data = {
-    ……
-}
+账号密码是pinenut和pinenut111。
+登录之后按照里面提示研究即可。每日6点05等时间打卡，如果需要改动，在主函数里修改这部分的时间。
 ```
-
-将第一步抓取到的access_token粘贴到第一个变量中。
-
-💚**2022年1月10日更新：**
-
-打卡信息现在可以使用 `punch_in_data_generator.py` 脚本进行抓取。使用方法：
-
-1. 现在手机上正常打卡
-2. 使用 python 运行 `punch_in_data_generator.py` 脚本
-3. 将生成的 `punch_in_data.json` 文件中的数据全部复制到 `default_data.py` 中对应的 `punch_in_data` 变量
-
-
+# On startup, if this is main, this section of code will run
+if __name__ == "__main__":
+    # 主定时
+    myjob0 = schedule.every().day.at("18:05").do(daka)
+    # 备用定时
+    myjob = schedule.every().day.at("18:10").do(daka)
+    # 备用定时2
+    myjob2 = schedule.every().day.at("18:20").do(daka)
+```
 
 **2.2 配置通知提醒**
 
+我也忘了这边代码是咋回事了……反正我一直用的是邮箱打卡……应该和它下面的配置差不多。
 ```python
 notify = "DingDing"
 ```
