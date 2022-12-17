@@ -86,34 +86,13 @@ pushplus_token = "2exxxxxxxxxxxxxxxxxxxx0fcb0cbed3"
 #### 3、配置python运行环境
 
 ```cmd
-pip install requests
+pip install -r requirements.txt
 ```
-
-
-
-#### 4、配置定时执行脚本
-
-**💻 Linux系列系统**
-
-使用cron定时执行，下面是每小时（的第一分钟时）执行一次打卡程序的例子：
-
-```
-1 * * * * python3 /home/xxxx/main.py
-```
-
-cron的具体使用教程可以参考这篇文章：[Linux crontab 命令 ｜ 菜鸟教程](https://www.runoob.com/linux/linux-comm-crontab.html)
-
-**💻 Windows系统**
-
-使用系统的“定时任务设置”即可，可视化配置非常简单，参考文章：[window下设置定时任务及基本配置 ｜ cnblog](https://www.cnblogs.com/funnyzpc/p/11746439.html)
-
 
 
 ### 💬 反馈
 
-出现bug或其他异常情况欢迎直接提issue。
-
-有必要时附上脚本运行日志，日志文件名为`YiFuDaoPuncher.log`
+全面放开了应该就没人反馈了吧……
 
 
 
@@ -127,4 +106,4 @@ cron的具体使用教程可以参考这篇文章：[Linux crontab 命令 ｜ �
 
 ### 📆 相关计划
 
-https://github.com/zimin9/YiFuDaoPuncher/milestones
+无
