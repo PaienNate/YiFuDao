@@ -31,7 +31,7 @@ login_manager.login_view = 'login'
 
 app = Flask(__name__)
 login_manager.init_app(app)
-# 返回凑合能用就行
+# 返回凑合能用就行！
 from flask_login import current_user, login_user, logout_user
 
 app.config['SECRET_KEY'] = 'CAONIMASHABIWANYI'
